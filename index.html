@@ -2,18 +2,137 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visual Sandbox</title>
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #f5f5f5; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-        .sandbox { text-align: center; }
-        .sandbox h1 { font-size: 2rem; font-weight: 300; letter-spacing: 0.05em; opacity: 0.7; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>Global Coffee House: Le Dernier Grain</title>
+    <link rel="stylesheet" href="css/game.css">
 </head>
 <body>
-    <div class="sandbox">
-        <h1>Visual Sandbox</h1>
+    <div id="game-container">
+        <!-- Title Screen -->
+        <div id="title-screen" class="screen active">
+            <div class="title-bg">
+                <div class="steam steam-1"></div>
+                <div class="steam steam-2"></div>
+                <div class="steam steam-3"></div>
+            </div>
+            <div class="title-content">
+                <div class="title-cup">
+                    <svg viewBox="0 0 120 100" class="cup-svg">
+                        <path d="M20,30 Q20,80 60,85 Q100,80 100,30 Z" fill="none" stroke="#c8956c" stroke-width="2"/>
+                        <path d="M100,40 Q120,40 120,55 Q120,70 100,70" fill="none" stroke="#c8956c" stroke-width="2"/>
+                        <ellipse cx="60" cy="30" rx="40" ry="8" fill="#3a1f0d" stroke="#c8956c" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h1 class="title-main">Global Coffee House</h1>
+                <h2 class="title-sub">Le Dernier Grain</h2>
+                <div class="title-line"></div>
+                <p class="title-tagline">Chaque tasse contient un monde</p>
+                <button class="btn-start" id="btn-new-game">Nouvelle Aventure</button>
+                <button class="btn-continue" id="btn-continue" style="display:none">Continuer</button>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen">
+            <!-- Scene Layer -->
+            <div id="scene-container">
+                <div id="scene-panorama">
+                    <div id="scene-bg" class="scene-layer"></div>
+                    <div id="scene-mid" class="scene-layer"></div>
+                    <div id="scene-fg" class="scene-layer"></div>
+                    <div id="scene-objects" class="scene-layer"></div>
+                    <div id="scene-characters" class="scene-layer"></div>
+                    <div id="particles-layer"></div>
+                </div>
+            </div>
+
+            <!-- HUD -->
+            <div id="hud">
+                <button id="hud-menu" class="hud-btn" aria-label="Menu">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+                </button>
+                <div id="hud-location"></div>
+                <div id="hud-chapter"></div>
+            </div>
+
+            <!-- Interaction Hint -->
+            <div id="interaction-hint" class="hidden">
+                <span id="hint-text"></span>
+            </div>
+
+            <!-- Dialogue Box -->
+            <div id="dialogue-box" class="hidden">
+                <div id="dialogue-portrait"></div>
+                <div id="dialogue-content">
+                    <div id="dialogue-name"></div>
+                    <div id="dialogue-text"></div>
+                    <div id="dialogue-choices"></div>
+                    <div id="dialogue-continue" class="hidden">Touchez pour continuer</div>
+                </div>
+            </div>
+
+            <!-- Inventory (swipe up) -->
+            <div id="inventory-drawer" class="drawer-closed">
+                <div id="inventory-handle">
+                    <div class="handle-bar"></div>
+                </div>
+                <div id="inventory-bag">
+                    <div id="inventory-items"></div>
+                </div>
+            </div>
+
+            <!-- Notebook (swipe from right) -->
+            <div id="notebook-panel" class="panel-closed">
+                <div id="notebook-edge"></div>
+                <div id="notebook-content">
+                    <div id="notebook-pages">
+                        <div id="notebook-left" class="notebook-page"></div>
+                        <div id="notebook-right" class="notebook-page"></div>
+                    </div>
+                    <div id="notebook-tabs"></div>
+                </div>
+            </div>
+
+            <!-- Item Detail Overlay -->
+            <div id="item-detail" class="hidden">
+                <div id="item-detail-bg"></div>
+                <div id="item-detail-content">
+                    <div id="item-detail-visual"></div>
+                    <div id="item-detail-name"></div>
+                    <div id="item-detail-desc"></div>
+                    <button id="item-detail-close">Fermer</button>
+                </div>
+            </div>
+
+            <!-- Puzzle Overlay -->
+            <div id="puzzle-overlay" class="hidden">
+                <div id="puzzle-container"></div>
+            </div>
+
+            <!-- Scene Transition -->
+            <div id="scene-transition"></div>
+        </div>
+
+        <!-- Cutscene Screen -->
+        <div id="cutscene-screen" class="screen">
+            <div id="cutscene-visual"></div>
+            <div id="cutscene-text"></div>
+            <div id="cutscene-continue">Touchez pour continuer</div>
+        </div>
     </div>
+
+    <script src="js/engine.js"></script>
+    <script src="js/touch.js"></script>
+    <script src="js/inventory.js"></script>
+    <script src="js/notebook.js"></script>
+    <script src="js/dialogue.js"></script>
+    <script src="js/puzzles.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/scenes.js"></script>
+    <script src="js/chapter1.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

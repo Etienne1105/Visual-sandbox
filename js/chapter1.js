@@ -30,6 +30,19 @@ const Chapter1 = (() => {
                     }
                 });
 
+                // Travel to Chapter 2 (appears after Ch1 complete)
+                if (Engine.hasFlag('ch1_complete')) {
+                    addObject(objects, {
+                        id: 'travel_ch2',
+                        x: '70%', y: '85%', w: '25%', h: '12%',
+                        hint: '\u2708 Voyager vers Addis-Abeba',
+                        glow: true,
+                        onClick() {
+                            travelToChapter2();
+                        }
+                    });
+                }
+
                 // Sign
                 addObject(objects, {
                     id: 'sign',
@@ -889,6 +902,56 @@ const Chapter1 = (() => {
                 });
             }
         }));
+    }
+
+    // ============================
+    // Travel to Chapter 2
+    // ============================
+    async function travelToChapter2() {
+        Dialogue.start({
+            id: 'travel_ch2_confirm',
+            nodes: [
+                {
+                    speaker: 'emile',
+                    name: 'Emile',
+                    text: 'Addis-Abeba. Le berceau du cafe. C\'est la que mamie veut que j\'aille.',
+                    choices: [
+                        {
+                            text: 'Prendre l\'avion pour l\'Ethiopie',
+                            onSelect() {
+                                Engine.state.chapter = 2;
+                                Inventory.add('billet_avion');
+                                Engine.save();
+                                launchCh2Cutscene();
+                            }
+                        },
+                        {
+                            text: 'Pas encore, je veux explorer Montreal',
+                            onSelect() {
+                                // Just close
+                            }
+                        }
+                    ]
+                }
+            ]
+        });
+    }
+
+    async function launchCh2Cutscene() {
+        await Engine.wait(500);
+        await Engine.playCutscene({
+            frames: [
+                {
+                    visual: '<div style="background:linear-gradient(135deg,#1a1209,#3a2a1a); width:100%; height:100%; display:flex; align-items:center; justify-content:center;"><div style="font-size:3rem;">\u2708\uFE0F</div></div>',
+                    text: 'L\'avion decolle de Trudeau dans la lumiere grise de l\'automne montrealais. Destination : Addis-Abeba, Ethiopie.'
+                },
+                {
+                    visual: '<div style="background:linear-gradient(180deg,#d4a050,#c89040); width:100%; height:100%; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px;"><div style="font-family:\'Segoe Script\',cursive; font-size:1.5rem; color:#3a2210;">Chapitre 2</div><div style="font-family:Georgia; font-size:0.9rem; color:#5a4a3a;">Le Berceau</div><div style="font-family:Georgia; font-size:0.7rem; color:#7a6a4a; font-style:italic;">Buna Dabo Naw</div></div>',
+                    text: '"Le cafe est notre pain." — proverbe ethiopien'
+                }
+            ]
+        });
+        await Engine.loadScene('ch2_piazza');
     }
 
     return { register };

@@ -957,6 +957,118 @@ html, body {
 }
 
 /* ============================================
+   ETHIOPIA PARTICLES & ANIMATIONS (Chapter 2)
+   ============================================ */
+
+@keyframes incense-rise {
+    0% { transform: translateY(0) scaleX(1) rotate(0deg); opacity: 0; }
+    20% { opacity: 0.15; }
+    50% { transform: translateY(-60px) scaleX(1.5) rotate(5deg); opacity: 0.1; }
+    100% { transform: translateY(-140px) scaleX(3) rotate(-5deg); opacity: 0; }
+}
+
+@keyframes coal-flicker {
+    0% { opacity: 0.6; transform: scale(1); }
+    30% { opacity: 0.8; transform: scale(1.05); }
+    60% { opacity: 0.5; transform: scale(0.98); }
+    100% { opacity: 0.7; transform: scale(1.02); }
+}
+
+/* Ceremony step indicator */
+.ceremony-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    max-width: 340px;
+}
+
+.ceremony-step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border: 1px solid rgba(200,149,108,0.15);
+    border-radius: 10px;
+    background: rgba(200,149,108,0.03);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: var(--font-serif);
+    font-size: 0.82rem;
+    color: var(--cream);
+}
+
+.ceremony-step:active {
+    transform: scale(0.97);
+}
+
+.ceremony-step.correct {
+    border-color: rgba(122,139,111,0.5);
+    background: rgba(122,139,111,0.1);
+}
+
+.ceremony-step.wrong {
+    border-color: rgba(139,58,42,0.5);
+    background: rgba(139,58,42,0.1);
+    animation: shake 0.4s ease-in-out;
+}
+
+.ceremony-step.locked {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.ceremony-step .step-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid var(--brass);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: var(--brass);
+    flex-shrink: 0;
+}
+
+.ceremony-step.correct .step-num {
+    border-color: #7a8b6f;
+    background: rgba(122,139,111,0.2);
+    color: #7a8b6f;
+}
+
+.ceremony-step .step-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.ceremony-step .step-text {
+    flex: 1;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    50% { transform: translateX(6px); }
+    75% { transform: translateX(-3px); }
+}
+
+/* Forest cherry finder */
+.forest-cherry {
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.forest-cherry:active {
+    transform: scale(1.3);
+}
+
+.forest-cherry.found {
+    filter: brightness(1.5) drop-shadow(0 0 8px rgba(200,50,20,0.5));
+}
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 

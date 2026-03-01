@@ -52,6 +52,15 @@ const Audio = (() => {
             case 'montreal-back':
                 createWorkshopAmbient();
                 break;
+            case 'ethiopia-piazza':
+                createEthiopiaPiazzaAmbient();
+                break;
+            case 'ethiopia-ceremony':
+                createEthiopiaCeremonyAmbient();
+                break;
+            case 'ethiopia-forest':
+                createEthiopiaForestAmbient();
+                break;
         }
     }
 
@@ -172,6 +181,180 @@ const Audio = (() => {
         rumbleGain.connect(ambientGain);
         rumble.start();
         ambientNodes.push(rumble);
+    }
+
+    // Ethiopia — Piazza street sounds
+    function createEthiopiaPiazzaAmbient() {
+        // Warm drone
+        const drone = ctx.createOscillator();
+        drone.type = 'sine';
+        drone.frequency.value = 120;
+        const droneGain = ctx.createGain();
+        droneGain.gain.value = 0.02;
+        drone.connect(droneGain);
+        droneGain.connect(ambientGain);
+        drone.start();
+        ambientNodes.push(drone);
+
+        // Distant voices/market buzz — filtered noise
+        const bufferSize = ctx.sampleRate * 4;
+        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+            const t = i / bufferSize;
+            data[i] = (Math.random() * 2 - 1) * 0.015 * (0.6 + 0.4 * Math.sin(t * Math.PI * 2 * 0.2));
+        }
+        const noiseSource = ctx.createBufferSource();
+        noiseSource.buffer = buffer;
+        noiseSource.loop = true;
+        const bandpass = ctx.createBiquadFilter();
+        bandpass.type = 'bandpass';
+        bandpass.frequency.value = 600;
+        bandpass.Q.value = 0.8;
+        noiseSource.connect(bandpass);
+        bandpass.connect(ambientGain);
+        noiseSource.start();
+        ambientNodes.push(noiseSource);
+
+        // Bird calls
+        scheduleEthiopianBirds();
+    }
+
+    function scheduleEthiopianBirds() {
+        if (currentAmbient !== 'ethiopia-piazza' && currentAmbient !== 'ethiopia-forest') return;
+        setTimeout(() => {
+            if (!ctx || (currentAmbient !== 'ethiopia-piazza' && currentAmbient !== 'ethiopia-forest')) return;
+            playBirdCall();
+            scheduleEthiopianBirds();
+        }, 3000 + Math.random() * 7000);
+    }
+
+    function playBirdCall() {
+        if (!ctx) return;
+        const osc = ctx.createOscillator();
+        osc.type = 'sine';
+        const baseFreq = 1200 + Math.random() * 800;
+        osc.frequency.setValueAtTime(baseFreq, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(baseFreq * 1.3, ctx.currentTime + 0.1);
+        osc.frequency.exponentialRampToValueAtTime(baseFreq * 0.8, ctx.currentTime + 0.2);
+        osc.frequency.exponentialRampToValueAtTime(baseFreq * 1.1, ctx.currentTime + 0.3);
+        const gain = ctx.createGain();
+        gain.gain.setValueAtTime(0, ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.02, ctx.currentTime + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+        osc.connect(gain);
+        gain.connect(ambientGain);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.4);
+    }
+
+    // Ethiopia — Ceremony (fire crackle, mortar rhythm)
+    function createEthiopiaCeremonyAmbient() {
+        // Fire crackle
+        const bufferSize = ctx.sampleRate * 3;
+        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+            const t = i / bufferSize;
+            const crackle = Math.random() > 0.97 ? (Math.random() - 0.5) * 0.15 : 0;
+            data[i] = (Math.random() * 2 - 1) * 0.008 + crackle;
+        }
+        const fireSource = ctx.createBufferSource();
+        fireSource.buffer = buffer;
+        fireSource.loop = true;
+        const fireFilter = ctx.createBiquadFilter();
+        fireFilter.type = 'bandpass';
+        fireFilter.frequency.value = 2000;
+        fireFilter.Q.value = 0.5;
+        fireSource.connect(fireFilter);
+        fireFilter.connect(ambientGain);
+        fireSource.start();
+        ambientNodes.push(fireSource);
+
+        // Low warm tone
+        const warmth = ctx.createOscillator();
+        warmth.type = 'sine';
+        warmth.frequency.value = 90;
+        const warmGain = ctx.createGain();
+        warmGain.gain.value = 0.02;
+        warmth.connect(warmGain);
+        warmGain.connect(ambientGain);
+        warmth.start();
+        ambientNodes.push(warmth);
+
+        // Mortar rhythm
+        scheduleMortarRhythm();
+    }
+
+    function scheduleMortarRhythm() {
+        if (currentAmbient !== 'ethiopia-ceremony') return;
+        setTimeout(() => {
+            if (!ctx || currentAmbient !== 'ethiopia-ceremony') return;
+            playMortarHit();
+            scheduleMortarRhythm();
+        }, 800 + Math.random() * 400);
+    }
+
+    function playMortarHit() {
+        if (!ctx) return;
+        const osc = ctx.createOscillator();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(200, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(80, ctx.currentTime + 0.1);
+        const gain = ctx.createGain();
+        gain.gain.setValueAtTime(0.03, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+        osc.connect(gain);
+        gain.connect(ambientGain);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.15);
+    }
+
+    // Ethiopia — Forest (birds, insects, deep ambience)
+    function createEthiopiaForestAmbient() {
+        // Deep forest drone
+        const drone = ctx.createOscillator();
+        drone.type = 'sine';
+        drone.frequency.value = 65;
+        const droneGain = ctx.createGain();
+        droneGain.gain.value = 0.025;
+        drone.connect(droneGain);
+        droneGain.connect(ambientGain);
+        drone.start();
+        ambientNodes.push(drone);
+
+        // Second drone
+        const drone2 = ctx.createOscillator();
+        drone2.type = 'sine';
+        drone2.frequency.value = 98;
+        const drone2Gain = ctx.createGain();
+        drone2Gain.gain.value = 0.012;
+        drone2.connect(drone2Gain);
+        drone2Gain.connect(ambientGain);
+        drone2.start();
+        ambientNodes.push(drone2);
+
+        // Insect buzz (high noise)
+        const bufferSize = ctx.sampleRate * 4;
+        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+            const t = i / bufferSize;
+            data[i] = (Math.random() * 2 - 1) * 0.006 * (0.5 + 0.5 * Math.sin(t * Math.PI * 8));
+        }
+        const insectSource = ctx.createBufferSource();
+        insectSource.buffer = buffer;
+        insectSource.loop = true;
+        const hipass = ctx.createBiquadFilter();
+        hipass.type = 'highpass';
+        hipass.frequency.value = 4000;
+        insectSource.connect(hipass);
+        hipass.connect(ambientGain);
+        insectSource.start();
+        ambientNodes.push(insectSource);
+
+        // Birds
+        scheduleEthiopianBirds();
     }
 
     // UI sounds

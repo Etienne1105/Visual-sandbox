@@ -18,6 +18,7 @@
 
         // Register chapters
         Chapter1.register();
+        Chapter2.register();
 
         // Panorama scrolling
         Touch.on('pan', (data) => {
@@ -162,7 +163,9 @@
         // Chapter info
         const info = document.createElement('div');
         info.style.cssText = 'font-family:var(--font-serif); font-size:0.7rem; color:var(--brass); opacity:0.5; margin-top:30px; text-align:center;';
-        info.innerHTML = `Chapitre ${Engine.state.chapter || 1} — Montreal<br>Global Coffee House: Le Dernier Grain`;
+        const chapterNames = { 1: 'Montreal', 2: 'Addis-Abeba', 3: 'Istanbul', 4: 'Vienne', 5: 'Kyoto' };
+        const chNum = Engine.state.chapter || 1;
+        info.innerHTML = `Chapitre ${chNum} — ${chapterNames[chNum] || '???'}<br>Global Coffee House: Le Dernier Grain`;
         menu.appendChild(info);
 
         document.getElementById('game-screen').appendChild(menu);

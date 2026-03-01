@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Sandbox - Accueil</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">Visual Sandbox</div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Accueil</a></li>
+            <li><a href="pages/dashboard.html">Dashboard</a></li>
+            <li><a href="pages/forms.html">Formulaires</a></li>
+            <li><a href="pages/gallery.html">Galerie</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle">&#9776;</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bienvenue sur Visual Sandbox</h1>
+            <p>Un terrain de test pour explorer et ameliorer l'excellence visuelle des interfaces web.</p>
+            <div class="hero-buttons">
+                <a href="pages/dashboard.html" class="btn btn-primary">Voir le Dashboard</a>
+                <a href="pages/forms.html" class="btn btn-secondary">Tester les Formulaires</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">Composants a Tester</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">&#128202;</div>
+                <h3>Dashboard</h3>
+                <p>Cartes de statistiques, tableaux de donnees et indicateurs visuels pour tester la lisibilite et la hierarchie.</p>
+                <a href="pages/dashboard.html" class="card-link">Explorer &rarr;</a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128221;</div>
+                <h3>Formulaires</h3>
+                <p>Champs de saisie, boutons, validations et etats interactifs pour tester l'experience utilisateur.</p>
+                <a href="pages/forms.html" class="card-link">Explorer &rarr;</a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#127912;</div>
+                <h3>Galerie</h3>
+                <p>Grille d'images, modales et effets de survol pour tester la mise en page et les transitions.</p>
+                <a href="pages/gallery.html" class="card-link">Explorer &rarr;</a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#9881;</div>
+                <h3>Composants UI</h3>
+                <p>Badges, alertes, tooltips et barres de progression pour tester les micro-interactions.</p>
+                <a href="#components" class="card-link">Voir ci-dessous &darr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Components Showcase -->
+    <section class="components" id="components">
+        <h2 class="section-title">Vitrine de Composants</h2>
+
+        <!-- Alerts -->
+        <div class="component-group">
+            <h3>Alertes</h3>
+            <div class="alert alert-success">Succes ! L'operation a ete effectuee avec succes.</div>
+            <div class="alert alert-warning">Attention ! Verifiez les donnees avant de continuer.</div>
+            <div class="alert alert-error">Erreur ! Une erreur est survenue lors du traitement.</div>
+            <div class="alert alert-info">Info : Cette section est en cours de developpement.</div>
+        </div>
+
+        <!-- Badges -->
+        <div class="component-group">
+            <h3>Badges</h3>
+            <div class="badges-row">
+                <span class="badge badge-primary">Nouveau</span>
+                <span class="badge badge-success">Actif</span>
+                <span class="badge badge-warning">En attente</span>
+                <span class="badge badge-danger">Urgent</span>
+                <span class="badge badge-info">v2.1.0</span>
+            </div>
+        </div>
+
+        <!-- Progress Bars -->
+        <div class="component-group">
+            <h3>Barres de progression</h3>
+            <div class="progress-item">
+                <div class="progress-label">
+                    <span>Design System</span>
+                    <span>75%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 75%"></div>
+                </div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-label">
+                    <span>Accessibilite</span>
+                    <span>40%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill progress-warning" style="width: 40%"></div>
+                </div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-label">
+                    <span>Performance</span>
+                    <span>90%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill progress-success" style="width: 90%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="component-group">
+            <h3>Boutons</h3>
+            <div class="buttons-row">
+                <button class="btn btn-primary">Primaire</button>
+                <button class="btn btn-secondary">Secondaire</button>
+                <button class="btn btn-success">Succes</button>
+                <button class="btn btn-danger">Danger</button>
+                <button class="btn btn-outline">Contour</button>
+                <button class="btn btn-ghost">Fantome</button>
+                <button class="btn btn-primary" disabled>Desactive</button>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="component-group">
+            <h3>Onglets</h3>
+            <div class="tabs">
+                <div class="tab-headers">
+                    <button class="tab-btn active" data-tab="tab1">General</button>
+                    <button class="tab-btn" data-tab="tab2">Details</button>
+                    <button class="tab-btn" data-tab="tab3">Parametres</button>
+                </div>
+                <div class="tab-content active" id="tab1">
+                    <p>Contenu de l'onglet General. Cette section affiche les informations principales du composant.</p>
+                </div>
+                <div class="tab-content" id="tab2">
+                    <p>Contenu de l'onglet Details. Ici vous trouverez des informations complementaires et des specifications techniques.</p>
+                </div>
+                <div class="tab-content" id="tab3">
+                    <p>Contenu de l'onglet Parametres. Configurez les options avancees du composant depuis cette section.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2 class="section-title">Temoignages</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Ce sandbox est parfait pour tester rapidement des ameliorations visuelles sans impacter la production."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">ML</div>
+                    <div>
+                        <div class="author-name">Marie Leclerc</div>
+                        <div class="author-role">Designer UI/UX</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Les composants couvrent une bonne variete de cas d'usage. Tres utile pour iterer sur le design system."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">TD</div>
+                    <div>
+                        <div class="author-name">Thomas Dupont</div>
+                        <div class="author-role">Dev Frontend</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Ideal pour former les juniors aux bonnes pratiques d'interface. On peut voir les defauts et les corriger ensemble."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SB</div>
+                    <div>
+                        <div class="author-name">Sophie Bernard</div>
+                        <div class="author-role">Lead Technique</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Visual Sandbox</h4>
+                <p>Un projet de test pour l'excellence visuelle des interfaces web.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Pages</h4>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="pages/dashboard.html">Dashboard</a></li>
+                    <li><a href="pages/forms.html">Formulaires</a></li>
+                    <li><a href="pages/gallery.html">Galerie</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Ressources</h4>
+                <ul>
+                    <li><a href="#">Guide de style</a></li>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Changelog</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Visual Sandbox. Projet de test.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

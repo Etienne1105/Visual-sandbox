@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Sandbox - Formulaires</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">Visual Sandbox</div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="forms.html" class="active">Formulaires</a></li>
+            <li><a href="gallery.html">Galerie</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle">&#9776;</button>
+    </nav>
+
+    <main class="page-content">
+        <h1 class="page-title">Formulaires</h1>
+        <p class="page-subtitle">Differents types de formulaires et champs de saisie pour tester l'experience utilisateur.</p>
+
+        <div class="forms-grid">
+            <!-- Login Form -->
+            <div class="form-card">
+                <h2>Connexion</h2>
+                <form class="form" id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Adresse email</label>
+                        <input type="email" id="email" class="form-input" placeholder="votre@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" id="password" class="form-input" placeholder="Votre mot de passe">
+                    </div>
+                    <div class="form-row">
+                        <label class="checkbox-label">
+                            <input type="checkbox"> Se souvenir de moi
+                        </label>
+                        <a href="#" class="form-link">Mot de passe oublie ?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Se connecter</button>
+                    <div class="form-divider">
+                        <span>ou</span>
+                    </div>
+                    <button type="button" class="btn btn-outline btn-full">Continuer avec Google</button>
+                </form>
+            </div>
+
+            <!-- Registration Form -->
+            <div class="form-card">
+                <h2>Inscription</h2>
+                <form class="form" id="registerForm">
+                    <div class="form-row-2col">
+                        <div class="form-group">
+                            <label for="firstName">Prenom</label>
+                            <input type="text" id="firstName" class="form-input" placeholder="Jean">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Nom</label>
+                            <input type="text" id="lastName" class="form-input" placeholder="Dupont">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Adresse email</label>
+                        <input type="email" id="regEmail" class="form-input" placeholder="jean@example.com">
+                        <span class="form-hint">Nous ne partagerons jamais votre email.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Mot de passe</label>
+                        <input type="password" id="regPassword" class="form-input" placeholder="Min. 8 caracteres">
+                        <div class="password-strength">
+                            <div class="strength-bar">
+                                <div class="strength-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="strength-text">Entrez un mot de passe</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Role</label>
+                        <select id="role" class="form-input">
+                            <option value="">Selectionnez un role</option>
+                            <option value="designer">Designer</option>
+                            <option value="developer">Developpeur</option>
+                            <option value="manager">Manager</option>
+                            <option value="other">Autre</option>
+                        </select>
+                    </div>
+                    <label class="checkbox-label">
+                        <input type="checkbox"> J'accepte les <a href="#">conditions d'utilisation</a>
+                    </label>
+                    <button type="submit" class="btn btn-primary btn-full">Creer un compte</button>
+                </form>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="form-card form-card-wide">
+                <h2>Contact</h2>
+                <form class="form" id="contactForm">
+                    <div class="form-row-3col">
+                        <div class="form-group">
+                            <label for="contactName">Nom complet</label>
+                            <input type="text" id="contactName" class="form-input" placeholder="Votre nom">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email</label>
+                            <input type="email" id="contactEmail" class="form-input" placeholder="votre@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPhone">Telephone</label>
+                            <input type="tel" id="contactPhone" class="form-input" placeholder="+33 6 12 34 56 78">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <select id="subject" class="form-input">
+                            <option value="">Choisissez un sujet</option>
+                            <option value="support">Support technique</option>
+                            <option value="sales">Commercial</option>
+                            <option value="feedback">Retour d'experience</option>
+                            <option value="bug">Signaler un bug</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="priority">Priorite</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="priority" value="low"> Basse
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="priority" value="medium" checked> Moyenne
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="priority" value="high"> Haute
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="priority" value="urgent"> Urgente
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-input form-textarea" rows="5" placeholder="Decrivez votre demande en detail..."></textarea>
+                        <span class="form-hint">Min. 20 caracteres</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Fichier joint</label>
+                        <div class="file-upload">
+                            <div class="file-upload-area" id="dropZone">
+                                <span class="file-upload-icon">&#128206;</span>
+                                <p>Glissez un fichier ici ou <span class="file-upload-link">parcourez</span></p>
+                                <span class="file-upload-hint">PNG, JPG, PDF (max. 5 Mo)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-ghost">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Envoyer le message</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Settings Form -->
+            <div class="form-card form-card-wide">
+                <h2>Preferences</h2>
+                <form class="form" id="settingsForm">
+                    <div class="form-group">
+                        <label>Notifications</label>
+                        <div class="toggle-group">
+                            <div class="toggle-row">
+                                <div>
+                                    <div class="toggle-label">Notifications email</div>
+                                    <div class="toggle-description">Recevoir des mises a jour par email</div>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="toggle-row">
+                                <div>
+                                    <div class="toggle-label">Notifications push</div>
+                                    <div class="toggle-description">Recevoir des alertes dans le navigateur</div>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="toggle-row">
+                                <div>
+                                    <div class="toggle-label">Newsletter hebdomadaire</div>
+                                    <div class="toggle-description">Resume des activites de la semaine</div>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="language">Langue</label>
+                        <select id="language" class="form-input">
+                            <option value="fr">Francais</option>
+                            <option value="en">English</option>
+                            <option value="de">Deutsch</option>
+                            <option value="es">Espanol</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Theme</label>
+                        <div class="theme-selector">
+                            <label class="theme-option">
+                                <input type="radio" name="theme" value="light" checked>
+                                <div class="theme-preview theme-light">
+                                    <span>Clair</span>
+                                </div>
+                            </label>
+                            <label class="theme-option">
+                                <input type="radio" name="theme" value="dark">
+                                <div class="theme-preview theme-dark">
+                                    <span>Sombre</span>
+                                </div>
+                            </label>
+                            <label class="theme-option">
+                                <input type="radio" name="theme" value="auto">
+                                <div class="theme-preview theme-auto">
+                                    <span>Auto</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-ghost">Reinitialiser</button>
+                        <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>&copy; 2026 Visual Sandbox. Projet de test.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "visual-excellence",
+  "version": "1.0.0",
+  "description": "Visual Excellence - A multi-page web application showcasing UI components with intentional design refinements",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "package": "node scripts/package.js",
+    "deploy": "echo 'Deploy via GitHub Pages workflow'"
+  },
+  "keywords": [
+    "visual-excellence",
+    "ui-components",
+    "css",
+    "dashboard",
+    "gallery",
+    "forms"
+  ],
+  "author": "Etienne1105",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Etienne1105/Visual-sandbox"
+  }
+}

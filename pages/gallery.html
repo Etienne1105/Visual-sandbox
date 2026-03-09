@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Sandbox - Galerie</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">Visual Sandbox</div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="forms.html">Formulaires</a></li>
+            <li><a href="gallery.html" class="active">Galerie</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle">&#9776;</button>
+    </nav>
+
+    <main class="page-content">
+        <h1 class="page-title">Galerie</h1>
+        <p class="page-subtitle">Grilles d'images, cartes produit et mises en page visuelles.</p>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+            <button class="filter-btn active">Tous</button>
+            <button class="filter-btn">Design</button>
+            <button class="filter-btn">Nature</button>
+            <button class="filter-btn">Architecture</button>
+            <button class="filter-btn">Abstrait</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid">
+            <div class="gallery-item gallery-item-tall">
+                <div class="gallery-image" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                    <div class="gallery-overlay">
+                        <h3>Gradient Violet</h3>
+                        <p>Design</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                    <div class="gallery-overlay">
+                        <h3>Gradient Rose</h3>
+                        <p>Design</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                    <div class="gallery-overlay">
+                        <h3>Gradient Bleu</h3>
+                        <p>Design</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item-wide">
+                <div class="gallery-image" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
+                    <div class="gallery-overlay">
+                        <h3>Gradient Vert</h3>
+                        <p>Nature</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image" style="background: linear-gradient(135deg, #fa709a, #fee140);">
+                    <div class="gallery-overlay">
+                        <h3>Gradient Chaud</h3>
+                        <p>Abstrait</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item-tall">
+                <div class="gallery-image" style="background: linear-gradient(135deg, #a18cd1, #fbc2eb);">
+                    <div class="gallery-overlay">
+                        <h3>Gradient Pastel</h3>
+                        <p>Design</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">
+                    <div class="gallery-overlay">
+                        <h3>Gradient Peche</h3>
+                        <p>Nature</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image" style="background: linear-gradient(135deg, #89f7fe, #66a6ff);">
+                    <div class="gallery-overlay">
+                        <h3>Gradient Ciel</h3>
+                        <p>Nature</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item gallery-item-wide">
+                <div class="gallery-image" style="background: linear-gradient(135deg, #fdcbf1, #e6dee9);">
+                    <div class="gallery-overlay">
+                        <h3>Gradient Doux</h3>
+                        <p>Abstrait</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Cards Section -->
+        <h2 class="section-title" style="margin-top: 60px;">Cartes Produit</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                    <span class="product-badge">Nouveau</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Categorie A</div>
+                    <h3 class="product-name">Produit Premium Alpha</h3>
+                    <p class="product-description">Description courte du produit avec ses principales caracteristiques.</p>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">49,99 &euro;</span>
+                            <span class="price-old">69,99 &euro;</span>
+                        </div>
+                        <button class="btn btn-primary btn-sm">Ajouter</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Categorie B</div>
+                    <h3 class="product-name">Produit Standard Beta</h3>
+                    <p class="product-description">Un autre produit avec une description pour tester le layout des cartes.</p>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">29,99 &euro;</span>
+                        </div>
+                        <button class="btn btn-primary btn-sm">Ajouter</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                    <span class="product-badge product-badge-sale">-30%</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Categorie A</div>
+                    <h3 class="product-name">Produit Deluxe Gamma</h3>
+                    <p class="product-description">Produit haut de gamme avec des fonctionnalites avancees et un design soigne.</p>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">89,99 &euro;</span>
+                            <span class="price-old">129,99 &euro;</span>
+                        </div>
+                        <button class="btn btn-primary btn-sm">Ajouter</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Categorie C</div>
+                    <h3 class="product-name">Produit Eco Delta</h3>
+                    <p class="product-description">Produit ecologique et responsable, fabrique avec des materiaux durables.</p>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">19,99 &euro;</span>
+                        </div>
+                        <button class="btn btn-primary btn-sm">Ajouter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal (hidden by default) -->
+        <div class="modal-backdrop" id="imageModal">
+            <div class="modal">
+                <button class="modal-close" id="modalClose">&times;</button>
+                <div class="modal-body">
+                    <div class="modal-image" id="modalImage"></div>
+                    <div class="modal-info">
+                        <h2 id="modalTitle">Titre</h2>
+                        <p id="modalDescription">Description</p>
+                        <div class="modal-actions">
+                            <button class="btn btn-primary">Telecharger</button>
+                            <button class="btn btn-outline">Partager</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>&copy; 2026 Visual Sandbox. Projet de test.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

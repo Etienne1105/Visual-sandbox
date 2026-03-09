@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Sandbox - Dashboard</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">Visual Sandbox</div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="dashboard.html" class="active">Dashboard</a></li>
+            <li><a href="forms.html">Formulaires</a></li>
+            <li><a href="gallery.html">Galerie</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle">&#9776;</button>
+    </nav>
+
+    <main class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Navigation</h3>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="sidebar-item active">
+                    <span class="sidebar-icon">&#128200;</span>
+                    <span>Vue d'ensemble</span>
+                </li>
+                <li class="sidebar-item">
+                    <span class="sidebar-icon">&#128101;</span>
+                    <span>Utilisateurs</span>
+                </li>
+                <li class="sidebar-item">
+                    <span class="sidebar-icon">&#128230;</span>
+                    <span>Produits</span>
+                </li>
+                <li class="sidebar-item">
+                    <span class="sidebar-icon">&#128176;</span>
+                    <span>Revenus</span>
+                </li>
+                <li class="sidebar-item">
+                    <span class="sidebar-icon">&#9881;</span>
+                    <span>Parametres</span>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="dashboard-content">
+            <div class="dashboard-header">
+                <h1>Tableau de Bord</h1>
+                <div class="header-actions">
+                    <select class="select-input">
+                        <option>7 derniers jours</option>
+                        <option>30 derniers jours</option>
+                        <option>Ce mois</option>
+                        <option>Cette annee</option>
+                    </select>
+                    <button class="btn btn-primary">Exporter</button>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-label">Utilisateurs Total</span>
+                        <span class="stat-icon">&#128101;</span>
+                    </div>
+                    <div class="stat-value">12,847</div>
+                    <div class="stat-change positive">+12.5% vs mois precedent</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-label">Revenus</span>
+                        <span class="stat-icon">&#128176;</span>
+                    </div>
+                    <div class="stat-value">48,290 &euro;</div>
+                    <div class="stat-change positive">+8.2% vs mois precedent</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-label">Commandes</span>
+                        <span class="stat-icon">&#128230;</span>
+                    </div>
+                    <div class="stat-value">1,432</div>
+                    <div class="stat-change negative">-3.1% vs mois precedent</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-label">Taux Conversion</span>
+                        <span class="stat-icon">&#128200;</span>
+                    </div>
+                    <div class="stat-value">3.24%</div>
+                    <div class="stat-change positive">+0.8% vs mois precedent</div>
+                </div>
+            </div>
+
+            <!-- Chart Area -->
+            <div class="chart-section">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Revenus Mensuels</h3>
+                        <div class="chart-legend">
+                            <span class="legend-item"><span class="legend-dot primary"></span> 2026</span>
+                            <span class="legend-item"><span class="legend-dot secondary"></span> 2025</span>
+                        </div>
+                    </div>
+                    <div class="chart-placeholder">
+                        <div class="bar-chart">
+                            <div class="bar-group">
+                                <div class="bar bar-primary" style="height: 60%"></div>
+                                <div class="bar bar-secondary" style="height: 45%"></div>
+                                <span class="bar-label">Jan</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar bar-primary" style="height: 75%"></div>
+                                <div class="bar bar-secondary" style="height: 55%"></div>
+                                <span class="bar-label">Fev</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar bar-primary" style="height: 55%"></div>
+                                <div class="bar bar-secondary" style="height: 65%"></div>
+                                <span class="bar-label">Mar</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar bar-primary" style="height: 85%"></div>
+                                <div class="bar bar-secondary" style="height: 50%"></div>
+                                <span class="bar-label">Avr</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar bar-primary" style="height: 70%"></div>
+                                <div class="bar bar-secondary" style="height: 60%"></div>
+                                <span class="bar-label">Mai</span>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar bar-primary" style="height: 90%"></div>
+                                <div class="bar bar-secondary" style="height: 70%"></div>
+                                <span class="bar-label">Jun</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-card chart-small">
+                    <div class="chart-header">
+                        <h3>Repartition</h3>
+                    </div>
+                    <div class="donut-chart">
+                        <div class="donut">
+                            <div class="donut-segment" style="--offset: 0; --value: 40; --color: #4f46e5;"></div>
+                            <div class="donut-segment" style="--offset: 40; --value: 25; --color: #10b981;"></div>
+                            <div class="donut-segment" style="--offset: 65; --value: 20; --color: #f59e0b;"></div>
+                            <div class="donut-segment" style="--offset: 85; --value: 15; --color: #ef4444;"></div>
+                            <div class="donut-hole">
+                                <span class="donut-total">100%</span>
+                            </div>
+                        </div>
+                        <div class="donut-legend">
+                            <div class="donut-legend-item"><span class="dot" style="background:#4f46e5"></span> Desktop (40%)</div>
+                            <div class="donut-legend-item"><span class="dot" style="background:#10b981"></span> Mobile (25%)</div>
+                            <div class="donut-legend-item"><span class="dot" style="background:#f59e0b"></span> Tablet (20%)</div>
+                            <div class="donut-legend-item"><span class="dot" style="background:#ef4444"></span> Autre (15%)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Table -->
+            <div class="table-section">
+                <div class="table-header">
+                    <h3>Dernieres Commandes</h3>
+                    <div class="table-actions">
+                        <input type="text" class="search-input" placeholder="Rechercher...">
+                        <button class="btn btn-outline">Filtrer</button>
+                    </div>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Client</th>
+                                <th>Produit</th>
+                                <th>Montant</th>
+                                <th>Statut</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#1001</td>
+                                <td>
+                                    <div class="client-cell">
+                                        <div class="client-avatar">AL</div>
+                                        <span>Alice Lambert</span>
+                                    </div>
+                                </td>
+                                <td>Pack Premium</td>
+                                <td>299,00 &euro;</td>
+                                <td><span class="badge badge-success">Livree</span></td>
+                                <td>28 fev 2026</td>
+                            </tr>
+                            <tr>
+                                <td>#1002</td>
+                                <td>
+                                    <div class="client-cell">
+                                        <div class="client-avatar">BM</div>
+                                        <span>Bruno Martin</span>
+                                    </div>
+                                </td>
+                                <td>Licence Pro</td>
+                                <td>149,00 &euro;</td>
+                                <td><span class="badge badge-warning">En cours</span></td>
+                                <td>27 fev 2026</td>
+                            </tr>
+                            <tr>
+                                <td>#1003</td>
+                                <td>
+                                    <div class="client-cell">
+                                        <div class="client-avatar">CR</div>
+                                        <span>Claire Rousseau</span>
+                                    </div>
+                                </td>
+                                <td>Formation Complete</td>
+                                <td>599,00 &euro;</td>
+                                <td><span class="badge badge-success">Livree</span></td>
+                                <td>26 fev 2026</td>
+                            </tr>
+                            <tr>
+                                <td>#1004</td>
+                                <td>
+                                    <div class="client-cell">
+                                        <div class="client-avatar">DP</div>
+                                        <span>David Petit</span>
+                                    </div>
+                                </td>
+                                <td>Support Annuel</td>
+                                <td>89,00 &euro;</td>
+                                <td><span class="badge badge-danger">Annulee</span></td>
+                                <td>25 fev 2026</td>
+                            </tr>
+                            <tr>
+                                <td>#1005</td>
+                                <td>
+                                    <div class="client-cell">
+                                        <div class="client-avatar">EG</div>
+                                        <span>Eva Garcia</span>
+                                    </div>
+                                </td>
+                                <td>Pack Starter</td>
+                                <td>49,00 &euro;</td>
+                                <td><span class="badge badge-info">En attente</span></td>
+                                <td>24 fev 2026</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-pagination">
+                    <span>Affichage 1-5 sur 42</span>
+                    <div class="pagination-buttons">
+                        <button class="btn btn-ghost" disabled>&laquo; Precedent</button>
+                        <button class="btn btn-ghost btn-page active">1</button>
+                        <button class="btn btn-ghost btn-page">2</button>
+                        <button class="btn btn-ghost btn-page">3</button>
+                        <button class="btn btn-ghost">Suivant &raquo;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
